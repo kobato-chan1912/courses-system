@@ -31,7 +31,11 @@
                             <div class="ui left icon input swdh95">
                                 <input class="prompt srch_explore" type="email" name="email" value="" id="id_email" required="" maxlength="64" placeholder="Email Address">
                                 <i class="uil uil-envelope icon icon2"></i>
+
                             </div>
+                            @if(isset($message))
+                            <p class="text-danger">{{$message}}</p>
+                            @endif
                         </div>
 
                         <div class="ui search focus mt-15">
@@ -39,6 +43,9 @@
                                 <input class="prompt srch_explore" type="password" name="password" value="" id="id_password" required="" maxlength="64" placeholder="Password">
                                 <i class="uil uil-key-skeleton-alt icon icon2"></i>
                             </div>
+                            @if(isset($incorrect))
+                                <p class="text-danger">{{$incorrect}}</p>
+                            @endif
                         </div>
                         <div class="ui form mt-30 checkbox_sign">
                             <div class="inline field">
@@ -61,6 +68,7 @@
 <!-- Signup End -->
 
 @include("loading.js")
+
 
 </body>
 
