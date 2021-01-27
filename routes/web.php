@@ -18,11 +18,9 @@ Route::get('/', function () {
 })->name('home');
 //
 Route::get('login', 'AuthController@GetLogin')->name('getLogin');
-
 Route::post('login', 'AuthController@Login')->name('login');
 
 Route::get('logout', 'AuthController@logout')->name('logout');
 
-
-
-
+Route::get('register', 'AuthController@getRegister')->name('getRegister');
+Route::post('register', 'AuthController@register')->name('register');

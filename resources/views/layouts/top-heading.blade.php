@@ -42,9 +42,12 @@
                             <div class="pd_content">
                                 <div class="rhte85">
                                     <h6>{{session("LoggedUser")["name"]}}</h6>
+                                    @if(session("LoggedUser")["verify_id"]==1)
                                     <div class="mef78" title="Verify">
                                         <i class='uil uil-check-circle'></i>
                                     </div>
+                                    @else
+                                    @endif
                                 </div>
                                 <span>{{session("LoggedUser")["email"]}}</span>
                             </div>

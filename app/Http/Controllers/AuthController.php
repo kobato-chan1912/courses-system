@@ -59,4 +59,36 @@ class AuthController extends Controller
             return redirect(url()->previous());
         }
     }
+
+    public function getRegister(){
+        return view('Auth.register');
+    }
+    public function register(Request $request){
+        // validate request.
+        $request->validate([
+            'email' => 'required|unique:users',
+            'phone' => 'required|unique:users,phone_number',
+            'name' => 'required',
+            'password' => 'required',
+            're_password' => 'required'
+        ]);
+        if ($request->password == $request->re_password) {
+            $user = new User();
+            $user->name = $request->name;
+            $user->phone_number = $request->phone;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->avatar_img = "img/avatar/default.jpg";
+            $user->verify_id = 2;
+            $user->roles_id = 2;
+            $query = $user->save();
+            return redirect()->route('login')->with(["success" => "Your account has been created. Please Log in."]);
+
+
+        }
+        else {
+            return view("Auth.register", ["message_password" => "Password does not match"]);
+        }
+
+    }
 }

@@ -58,7 +58,7 @@
                         <button class="login-btn" type="submit">Sign In</button>
                     </form>
                     <p class="sgntrm145">Or <a href="forgot_password.html">Forgot Password</a>.</p>
-                    <p class="mb-0 mt-30 hvsng145">Don't have an account? <a href="sign_up.html">Sign Up</a></p>
+                    <p class="mb-0 mt-30 hvsng145">Don't have an account? <a href="{{route('getRegister')}}">Sign Up</a></p>
                 </div>
                 <div class="sign_footer"><img src="images/sign_logo.png" alt="">© 2020 <strong>Cursus</strong>. All Rights Reserved.</div>
             </div>
@@ -68,7 +68,13 @@
 <!-- Signup End -->
 
 @include("loading.js")
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
+@if(session()->get('success'))
+    <script>
+        @include("Alert.success")
+    </script>
+@endif
 
 </body>
 
