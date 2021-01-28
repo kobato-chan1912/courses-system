@@ -24,3 +24,6 @@ Route::get('logout', 'AuthController@logout')->name('logout');
 
 Route::get('register', 'AuthController@getRegister')->name('getRegister');
 Route::post('register', 'AuthController@register')->name('register');
+
+Route::get('authorize', 'AuthController@authorization')->name('authorize');
+Route::get('confirm', 'AuthController@confirmAuthorize')->name('confirm_authorize');

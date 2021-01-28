@@ -4,11 +4,29 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
+
 
 class AuthController extends Controller
 {
     //
+    public function authorization (Request $request){
+        $_token = str::random(32);
+        User::where("id", $request->session()->get("LoggedUser")["id"])
+            ->update(["token" => $_token]);
+        return view('Auth.authorize');
+    }
+    public function confirmAuthorize(Request $request){
+        $userToken = User::select('token')->where('id',$request->session()->get("LoggedUser")["id"])->get()->first()["token"];
+        if ($userToken == $request->token){
+            echo "Đã xác thực"; // change verified_id to 1 and clear form in database.
+        }
+        else {
+            echo "Không hề xác thực";
+        }
+    }
+
     public function GetLogin(Request $request){
         if ($request->session()->has("LoggedUser")) {
             return redirect(url()->previous());
@@ -91,4 +109,6 @@ class AuthController extends Controller
         }
 
     }
+
+
 }

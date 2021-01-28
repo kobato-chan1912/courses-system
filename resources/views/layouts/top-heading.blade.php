@@ -33,12 +33,12 @@
             @if(session("LoggedUser"))
             <li class="ui dropdown">
                 <a href="#" class="opts_account">
-                    <img src="images/hd_dp.jpg" alt="">
+                    <img src="{{asset(session("LoggedUser")["avatar_img"])}}" alt="">
                 </a>
                 <div class="menu dropdown_account">
                     <div class="channel_my">
                         <div class="profile_link">
-                            <img src="images/hd_dp.jpg" alt="">
+                            <img src="{{asset(session("LoggedUser")["avatar_img"])}}" alt="">
                             <div class="pd_content">
                                 <div class="rhte85">
                                     <h6>{{session("LoggedUser")["name"]}}</h6>
