@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.home');
-})->name('home');
+// Authentication.
+
+
+Route::get('/', 'HomeController@getHome' );
 //
 Route::get('login', 'AuthController@GetLogin')->name('getLogin');
 Route::post('login', 'AuthController@Login')->name('login');
@@ -27,3 +28,14 @@ Route::post('register', 'AuthController@register')->name('register');
 
 Route::get('authorize', 'AuthController@authorization')->name('authorize');
 Route::get('confirm', 'AuthController@confirmAuthorize')->name('confirm_authorize');
+
+Route::get('forgot', 'AuthController@getForgot')->name('forgot');
+
+Route::post('forgot', 'AuthController@resetPassword');
+Route::get('reset', 'AuthController@getReset');
+
+// Categories get.
+Route::get('cate', 'HomeController@getCategories');
+
+// Courses get.
+Route::get('courses/id={id}', 'CourseController@showCourse')->name("courseDetail");

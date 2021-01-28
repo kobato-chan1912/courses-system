@@ -57,7 +57,7 @@
                         </div>
                         <button class="login-btn" type="submit">Sign In</button>
                     </form>
-                    <p class="sgntrm145">Or <a href="forgot_password.html">Forgot Password</a>.</p>
+                    <p class="sgntrm145">Or <a href="{{route('forgot')}}">Forgot Password</a>.</p>
                     <p class="mb-0 mt-30 hvsng145">Don't have an account? <a href="{{route('getRegister')}}">Sign Up</a></p>
                 </div>
                 <div class="sign_footer"><img src="images/sign_logo.png" alt="">© 2020 <strong>Cursus</strong>. All Rights Reserved.</div>

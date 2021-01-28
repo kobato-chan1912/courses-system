@@ -21,6 +21,12 @@
     <div class="header_right">
         <ul>
             @if(session("LoggedUser"))
+                @if(session("LoggedUser")["verify_id"]==2)
+                <li>
+                    <a href="{{route('authorize')}}" class="upload_btn">Xác thực tài khoản</a>
+                </li>
+                @else
+                @endif
             @else
             <li>
                 <a href="{{route('login')}}" class="upload_btn">Đăng ký</a>
@@ -31,6 +37,7 @@
             @endif
 
             @if(session("LoggedUser"))
+
             <li class="ui dropdown">
                 <a href="#" class="opts_account">
                     <img src="{{asset(session("LoggedUser")["avatar_img"])}}" alt="">
