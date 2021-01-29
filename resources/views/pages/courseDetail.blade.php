@@ -275,8 +275,16 @@
                                                     </div>
                                                 </div>
                                                 <div class="details">
-                                                    <a href="#" class="preview-text">Preview</a>
-                                                    <span class="content-summary">07:48</span>
+                                                    @if($detail->lock_status == 1)
+                                                    <a href="#" class="preview-text">Locked</a>
+                                                        <span class="content-summary">Locked</span>
+
+                                                    @else
+                                                        <a href="{{route("video", $detail->id)}}" class="preview-text">Watch</a>
+                                                        <span class="content-summary">07:48</span>
+
+
+                                                    @endif
                                                 </div>
                                             </div>
                                                 @endif

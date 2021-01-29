@@ -40,4 +40,17 @@ Route::get('cate', 'HomeController@getCategories');
 // Courses get.
 Route::get('courses/id={id}', 'CourseController@showCourse')->name("courseDetail");
 
-Route::get('video/watch={id}', 'VideoController@getVideoPage');
+
+
+// video watcher.
+Route::get('video/watch={id}', 'VideoController@getVideoPage')->name("video");
+
+// ADMIN Page.
+
+Route::prefix('admin')->group(function () {
+
+    Route::get('/dashboard', function (){
+
+    });
+
+});

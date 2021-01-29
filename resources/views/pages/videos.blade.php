@@ -20,37 +20,19 @@
                     <div class="section3125">
                         <div class="live1452">
                             <video id="example-player" width="100%">
-                                <source src="videos/01.mp4"
+                                <source src="{{asset($detail[0]->video_url)}}"
                                         title="1080p" type="video/mp4"/>
 
                             </video>
                         </div>
                         <div class="user_dt5">
-                            <div class="user_dt_left">
-                                <div class="live_user_dt">
-                                    <div class="user_img5">
-                                        <img src="images/left-imgs/img-4.jpg" alt="">
-                                    </div>
-                                    <div class="user_cntnt">
-                                        <h4>Jassica William</h4>
-                                        <button class="subscribe-btn">Subscribe</button>
-                                    </div>
-                                </div>
-                            </div>
+
                             <div class="user_dt_right">
                                 <ul>
                                     <li>
                                         <a href="#" class="lkcm152"><i class='uil uil-eye'></i><span>1452</span></a>
                                     </li>
-                                    <li>
-                                        <a href="#" class="lkcm152"><i class='uil uil-thumbs-up'></i><span>100</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="lkcm152"><i class='uil uil-thumbs-down'></i><span>20</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="lkcm152"><i class='uil uil-share-alt'></i><span>9</span></a>
-                                    </li>
+
                                 </ul>
                             </div>
                         </div>
