@@ -39,3 +39,5 @@ Route::get('cate', 'HomeController@getCategories');
 
 // Courses get.
 Route::get('courses/id={id}', 'CourseController@showCourse')->name("courseDetail");
+
+Route::get('video/watch={id}', 'VideoController@getVideoPage');

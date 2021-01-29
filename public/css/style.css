@@ -9,7 +9,10 @@ Table Of Content
 5.  Top Scroll Bar
 
 =============================================================*/
-
+#fluid_video_wrapper_example-player{
+    width: auto !important;
+    height: auto !important;
+}
 
 /* ==================================================================================
 Fonts
