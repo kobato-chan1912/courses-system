@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\DB;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,7 +50,16 @@ Route::get('video/watch={id}', 'VideoController@getVideoPage')->name("video");
 Route::prefix('admin')->group(function () {
 
     Route::get('/dashboard', function (){
-
+        return view('Admin.admin'); //admin dashboard.
     });
+
+    // Course manager
+
+    Route::get("/courses", 'AdminController@course');
+    Route::get('/courses/add', function (){
+        $categories = DB::table("categories")->get();
+       return view("Admin.Pages.courses.addcourse", ["categories" => $categories]);
+    })->name("addCourse");
+
 
 });
