@@ -557,7 +557,8 @@
     <!--**********************************
         Content body start
     ***********************************-->
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
+        @csrf
     <div class="content-body">
         <div class="container-fluid">
             <div class="row page-titles mx-0">
@@ -581,36 +582,49 @@
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title">Thêm mới khoá học </h4>
+                            @error("name_course")
+                            <div class="text-danger">{{$message}}</div>
+                            @enderror
+                            @error("cover_img")
+                            <div class="text-danger">{{$message}}</div>
+                            @enderror
+                            @error("categories")
+                            <div class="text-danger">{{$message}}</div>
+                            @enderror
+                            @error("description")
+                            <div class="text-danger">{{$message}}</div>
+                            @enderror
+                            @error("price")
+                            <div class="text-danger">{{$message}}</div>
+                            @enderror
+                            @if(isset($fileValidate))
+                                <div class="text-danger">{{$fileValidate}}</div>
+                                @endif
                         </div>
+
                         <div class="card-body">
                             <div class="basic-form">
 
                                     <div class="form-group row">
                                         <label class="col-sm-3 col-form-label">Tên Khoá học</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" placeholder="Tên khoá học">
+                                            <input type="text" class="form-control" placeholder="Tên khoá học" name="name_course">
+
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label">Giá khoá học</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" placeholder="Giá khoá học">
-                                        </div>
-                                    </div>
+
                                     <div class="form-group row">
                                         <label class="col-sm-3 col-form-label">Ảnh khoá học</label>
                                         <div class="col-sm-9">
-                                            <input type="file" class="form-control" placeholder="cover">
+                                            <input type="file" name="cover_img" class="form-control" placeholder="cover" accept="image/*">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">Chọn danh mục</label>
-                                            <select class="col-sm-9">
+                                            <select class="col-sm-9" name="categories">
                                                 <option selected disabled>Chọn danh mục</option>
-                                                @foreach($categories as $select)
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
+                                                @foreach($dataCategories as $select)
+                                                <option value="{{$select->id}}">{{$select->name_catgories}}</option>
                                                 @endforeach
                                             </select>
 
@@ -620,46 +634,17 @@
                                     <div class="form-group row">
                                         <label class="col-sm-3 col-form-label">Mô tả khoá học</label>
                                         <div class="col-sm-9">
-                                            <textarea class="form-control" placeholder="Mô tả khoá học"></textarea>
+                                            <textarea class="form-control" placeholder="Mô tả khoá học" name="description"></textarea>
 
                                         </div>
                                     </div>
-                                    <fieldset class="form-group">
-                                        <div class="row">
-                                            <label class="col-form-label col-sm-3 pt-0">Chọn lựa</label>
-                                            <div class="col-sm-9">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="gridRadios" value="option1" checked>
-                                                    <label class="form-check-label">
-                                                        First radio
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="gridRadios" value="option2">
-                                                    <label class="form-check-label">
-                                                        Second radio
-                                                    </label>
-                                                </div>
-                                                <div class="form-check disabled">
-                                                    <input class="form-check-input" type="radio" name="gridRadios" value="option3" disabled>
-                                                    <label class="form-check-label">
-                                                        Third disabled radio
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </fieldset>
                                     <div class="form-group row">
-                                        <div class="col-sm-3">Checkbox</div>
-                                        <div class="col-sm-9">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox">
-                                                <label class="form-check-label">
-                                                    Example checkbox
-                                                </label>
-                                            </div>
-                                        </div>
+                                    <label class="col-sm-3 col-form-label">Giá khoá học</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" placeholder="Ví dụ: 235000" name="price">
                                     </div>
+                                </div>
+
                                     <div class="form-group row">
                                         <div class="col-sm-10">
                                             <button type="submit" class="btn btn-primary">Lưu khoá học</button>

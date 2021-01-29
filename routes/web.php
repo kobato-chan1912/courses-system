@@ -61,5 +61,6 @@ Route::prefix('admin')->group(function () {
        return view("Admin.Pages.courses.addcourse", ["categories" => $categories]);
     })->name("addCourse");
 
+    Route::post('/courses/add', 'AdminController@addCourse');
 
 });
