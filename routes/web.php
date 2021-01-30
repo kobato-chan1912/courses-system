@@ -55,7 +55,7 @@ Route::prefix('admin')->group(function () {
 
     // Course manager
 
-    Route::get("/courses", 'AdminController@course');
+    Route::get("/courses", 'AdminController@course')->name('adminCourse');
     Route::get('/courses/add', function (){
         $categories = DB::table("categories")->get();
        return view("Admin.Pages.courses.addcourse", ["categories" => $categories]);

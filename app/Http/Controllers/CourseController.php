@@ -24,5 +24,8 @@ class CourseController extends Controller
         // return view.
         return view("pages.courseDetail", ["courseDetail" => $detail, "tableColumn" => $columnID, "videos" => $video]);
     }
+    public function addCourse(){
+
+    }
 
 }
