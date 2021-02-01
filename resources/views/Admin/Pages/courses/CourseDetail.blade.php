@@ -564,14 +564,16 @@
             <div class="row page-titles mx-0">
                 <div class="col-sm-6 p-md-0">
                     <div class="welcome-text">
-                        <h4>Hi, welcome back!</h4>
+                        <h4>{{$courseDetail[0]->name_course}}</h4>
                         <span>Accordion</span>
                     </div>
                 </div>
                 <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Bootstrap</a></li>
-                        <li class="breadcrumb-item active"><a href="javascript:void(0)">Accordion</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('adminDashboard')}}">Admin</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('adminCourse')}}">Quản lý khoá học</a></li>
+                        <li class="breadcrumb-item">{{$courseDetail[0]->name_course}}</li>
+
                     </ol>
                 </div>
             </div>
@@ -637,10 +639,10 @@
                                                                 <td><strong>{{$detail->id}}</strong></td>
                                                                 <td>{{$detail->name}}</td>
                                                                 @if($detail->lock_status == 1)
-                                                                    <td><span class="badge light badge-danger">Miễn phí</span></td>
+                                                                    <td><span class="badge light badge-danger">Trả phí</span></td>
 
                                                                 @else
-                                                                    <td><span class="badge light badge-success">Trả phí</span></td>
+                                                                    <td><span class="badge light badge-success">Miễn phí</span></td>
                                                                 @endif
 
                                                                     <td>{{$detail->created_date}}</td>

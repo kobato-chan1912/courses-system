@@ -51,7 +51,7 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/dashboard', function (){
         return view('Admin.admin'); //admin dashboard.
-    });
+    })->name('adminDashboard');
 
     // Course manager
 
@@ -76,4 +76,8 @@ Route::prefix('admin')->group(function () {
     Route::get("/videos/add/course={id_course}/tableColumn={id_column}", 'AdminController@getNewVideo')->name('adminNewVideos');
     Route::post("/videos/add/course={id_course}/tableColumn={id_column}", 'AdminController@addVideo');
 
+});
+
+Route::get('/quantri', function (){
+   return redirect()->route('adminDashboard');
 });

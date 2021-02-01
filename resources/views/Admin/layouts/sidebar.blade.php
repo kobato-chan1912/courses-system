@@ -8,8 +8,14 @@
                 </a>
 
             </li>
+            <li><a class="has-arrow ai-icon" href="{{route('adminCourse')}}" aria-expanded="false">
+                    <i class="flaticon-381-book"></i>
+                    <span class="nav-text">Quản lý khoá học</span>
+                </a>
+
+            </li>
             <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="flaticon-381-networking"></i>
+                    <i class="flaticon-381-user-5"></i>
                     <span class="nav-text">Quản lý bình luận</span>
                 </a>
             <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
@@ -31,12 +37,7 @@
 
             </li>
             </li>
-            <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                    <i class="flaticon-381-television"></i>
-                    <span class="nav-text">Quản lý khoá học</span>
-                </a>
 
-            </li>
             <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                     <i class="flaticon-381-controls-3"></i>
                     <span class="nav-text">Quản lý bài giảng</span>

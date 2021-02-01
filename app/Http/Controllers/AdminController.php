@@ -121,7 +121,48 @@ class AdminController extends Controller
 
     }
     public function addVideo($id_course, $id_column, Request $request){
-        var_dump($request->all());
+        $videos = new videos();
+
+
+        // solving video upload.
+        // validated in front-end.
+        // get the lasted video ID.
+
+        $lasted_course = $videos->getLast()->id;
+        $new_id = $lasted_course+1;
+        $folder = $new_format_id = sprintf("%02d", $id_course);
+        $video = $request->file('video'); //get the file.
+        // @Overide file name@//
+        $file_name = $video->getClientOriginalName();
+        $file_name = explode('.',$file_name)[0];
+        $video_name = $file_name. "_$id_course" . "_" . $id_column."_".$new_id.".mp4";
+
+        $videoURL = asset("courses/$folder/$video_name");
+
+        $video->move("courses/$folder", $video_name); //move video.
+
+        // solve the document.
+
+        if ($request->file('document')) {
+
+            $document = $request->file('document');
+            $document_name = $document->getClientOriginalName();
+            $documentURL = asset("documents/$document_name");
+            $document->move("documents", $document_name);
+            // add to database.
+        }
+        else{
+            $documentURL = 'nulled';
+        }
+            $videos->addVideo($id_course, $id_column, $video_name, $request->name_video, $videoURL,
+
+                $request->gridRadios, $request->description, $documentURL);
+
+            //
+
+        return redirect()->route("adminCourseDetail", $id_course);
+
+
     }
 
 }

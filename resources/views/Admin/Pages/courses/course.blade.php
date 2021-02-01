@@ -562,13 +562,13 @@
             <div class="row page-titles mx-0">
                 <div class="col-sm-6 p-md-0">
                     <div class="welcome-text">
-                        <h4>Hi, welcome back!</h4>
+                        <h4>Trang Quản lý khoá học</h4>
                         <p class="mb-0">Your business dashboard template</p>
                     </div>
                 </div>
                 <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Admin</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('adminDashboard')}}">Admin</a></li>
                         <li class="breadcrumb-item active"><a href="javascript:void(0)">Quản lý khoá học</a></li>
                     </ol>
                 </div>
@@ -614,8 +614,8 @@
                                                         <svg width="20px" height="20px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"/><circle fill="#000000" cx="5" cy="12" r="2"/><circle fill="#000000" cx="12" cy="12" r="2"/><circle fill="#000000" cx="19" cy="12" r="2"/></g></svg>
                                                     </button>
                                                     <div class="dropdown-menu">
-                                                        <a class="dropdown-item" href="{{route('adminCourseDetail', $course->id)}}">Edit</a>
-                                                        <a class="dropdown-item" href="#">Delete</a>
+                                                        <a class="dropdown-item" href="{{route('adminCourseDetail', $course->id)}}">Sửa</a>
+                                                        <a class="dropdown-item" href="#">Xoá</a>
                                                     </div>
                                                 </div>
                                             </td>

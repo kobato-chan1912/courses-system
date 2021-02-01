@@ -641,13 +641,13 @@
                                             <label class="col-form-label col-sm-3 pt-0">Trạng thái</label>
                                             <div class="col-sm-9">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="gridRadios" value="option1" checked required>
+                                                    <input class="form-check-input" type="radio" name="gridRadios" value="1" checked required>
                                                     <label class="form-check-label">
                                                         Miễn phí
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="gridRadios" value="option2">
+                                                    <input class="form-check-input" type="radio" name="gridRadios" value="2">
                                                     <label class="form-check-label">
                                                         Trả phí
                                                     </label>
@@ -658,13 +658,13 @@
                                     <div class="form-group row">
                                         <label class="col-sm-3 col-form-label">Video tải lên (*mp4)</label>
                                         <div class="col-sm-9">
-                                            <input type="file" name="cover_img" class="form-control" placeholder="cover" accept="video/mp4" required>
+                                            <input type="file" class="form-control" placeholder="cover" name="video" accept="video/mp4" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-sm-3 col-form-label">Tài liệu tải lên</label>
                                         <div class="col-sm-9">
-                                            <input type="file" name="cover_img" class="form-control" placeholder="cover">
+                                            <input type="file" name="document" class="form-control" placeholder="cover">
                                         </div>
                                     </div>
 
