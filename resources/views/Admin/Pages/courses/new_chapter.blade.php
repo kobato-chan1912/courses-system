@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-@include("Admin.loading.header", ["title" => "Hello world"])
+@include("Admin.loading.header", ["title" => "Thêm chương"])
 
 <body>
 
@@ -28,8 +28,8 @@
     <!--**********************************
         Nav header start
     ***********************************-->
-    @include("Admin.layouts.logo")
-    <!--**********************************
+@include("Admin.layouts.logo")
+<!--**********************************
         Nav header end
     ***********************************-->
 
@@ -541,99 +541,91 @@
     <!--**********************************
         Header start
     ***********************************-->
-    @include("Admin.layouts.tophead")
-    <!--**********************************
+@include("Admin.layouts.tophead")
+<!--**********************************
         Header end ti-comment-alt
     ***********************************-->
 
     <!--**********************************
         Sidebar start
     ***********************************-->
-    @include("Admin.layouts.sidebar")
-    <!--**********************************
+@include("Admin.layouts.sidebar")
+<!--**********************************
         Sidebar end
     ***********************************-->
 
     <!--**********************************
         Content body start
     ***********************************-->
-    <div class="content-body">
-        <div class="container-fluid">
-            <div class="row page-titles mx-0">
-                <div class="col-sm-6 p-md-0">
-                    <div class="welcome-text">
-                        <h4>Hi, welcome back!</h4>
-                        <p class="mb-0">Your business dashboard template</p>
+    <form action="" method="post" enctype="multipart/form-data">
+        @csrf
+        <div class="content-body">
+            <div class="container-fluid">
+                <div class="row page-titles mx-0">
+                    <div class="col-sm-6 p-md-0">
+                        <div class="welcome-text">
+                            <h4>Hi, welcome back!</h4>
+                            <span>Element</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Admin</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0)">Thêm khoá học</a></li>
+                        </ol>
                     </div>
                 </div>
-                <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Admin</a></li>
-                        <li class="breadcrumb-item active"><a href="javascript:void(0)">Quản lý khoá học</a></li>
-                    </ol>
-                </div>
-            </div>
-            <!-- row -->
+                <!-- row -->
+                <div class="row">
 
-            <div class="row">
-
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">Các khoá học hiện hành</h4>
-                            <div class="input-group-append">
-                                <a href="{{route("addCourse")}}">
-                                <button type="button" class="btn btn-primary"><i class="fa fa-plus"></i>  Tạo khoá học</button>
-                                </a>
+                    <div class="col-xl-12 col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Thêm chương mới </h4>
+                                @error("name_course")
+                                <div class="text-danger">{{$message}}</div>
+                                @enderror
+                                @error("cover_img")
+                                <div class="text-danger">{{$message}}</div>
+                                @enderror
+                                @error("categories")
+                                <div class="text-danger">{{$message}}</div>
+                                @enderror
+                                @error("description")
+                                <div class="text-danger">{{$message}}</div>
+                                @enderror
+                                @error("price")
+                                <div class="text-danger">{{$message}}</div>
+                                @enderror
+                                @if(isset($fileValidate))
+                                    <div class="text-danger">{{$fileValidate}}</div>
+                                @endif
                             </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-responsive-md">
-                                    <thead>
-                                    <tr>
-                                        <th style="width:80px;"><strong>#ID</strong></th>
-                                        <th><strong>Tên khoá</strong></th>
-                                        <th><strong>Ngày tải lên</strong></th>
-                                        <th><strong>Học viên</strong></th>
-                                        <th><strong>Giá</strong></th>
-                                        <th></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach($data as $course)
-                                        <tr>
-                                            <td><strong>{{$course->id}}</strong></td>
-                                            <td>{{$course->name_course}}</td>
-                                            <td>{{$course->created_date}}</td>
-                                            <td><span class="badge light badge-success">10 HV</span></td>
-                                            <td>{{number_format($course->price)}} VNĐ</td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <button type="button" class="btn btn-success light sharp" data-toggle="dropdown">
-                                                        <svg width="20px" height="20px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"/><circle fill="#000000" cx="5" cy="12" r="2"/><circle fill="#000000" cx="12" cy="12" r="2"/><circle fill="#000000" cx="19" cy="12" r="2"/></g></svg>
-                                                    </button>
-                                                    <div class="dropdown-menu">
-                                                        <a class="dropdown-item" href="{{route('adminCourseDetail', $course->id)}}">Edit</a>
-                                                        <a class="dropdown-item" href="#">Delete</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @endforeach
 
+                            <div class="card-body">
+                                <div class="basic-form">
 
-                                    </tbody>
-                                </table>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Tên chương</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" placeholder="Tên chương" name="name_chapter">
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-10">
+                                            <button type="submit" class="btn btn-primary">Lưu chương</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
-
             </div>
-
         </div>
-    </div>
+    </form>
     <!--**********************************
         Content body end
     ***********************************-->
@@ -642,7 +634,11 @@
     <!--**********************************
         Footer start
     ***********************************-->
-    @include("Admin.layouts.footer")
+    <div class="footer">
+        <div class="copyright">
+            <p>Copyright © Designed &amp; Developed by <a href="http://dexignzone.com/" target="_blank">DexignZone</a> 2020</p>
+        </div>
+    </div>
     <!--**********************************
         Footer end
     ***********************************-->
@@ -666,10 +662,6 @@
 ***********************************-->
 <!-- Required vendors -->
 @include("Admin.loading.js")
-
-
-
-
 
 
 </body>

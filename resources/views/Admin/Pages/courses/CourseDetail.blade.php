@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 @include("Admin.loading.header", ["title" => "Hello world"])
@@ -558,85 +559,136 @@
         Content body start
     ***********************************-->
     <div class="content-body">
+        <!-- container starts -->
         <div class="container-fluid">
             <div class="row page-titles mx-0">
                 <div class="col-sm-6 p-md-0">
                     <div class="welcome-text">
                         <h4>Hi, welcome back!</h4>
-                        <p class="mb-0">Your business dashboard template</p>
+                        <span>Accordion</span>
                     </div>
                 </div>
                 <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Admin</a></li>
-                        <li class="breadcrumb-item active"><a href="javascript:void(0)">Quản lý khoá học</a></li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Bootstrap</a></li>
+                        <li class="breadcrumb-item active"><a href="javascript:void(0)">Accordion</a></li>
                     </ol>
                 </div>
             </div>
             <!-- row -->
-
+            <!-- Row starts -->
             <div class="row">
-
-                <div class="col-lg-12">
+                <!-- Column starts -->
+                <div class="col-xl-12">
                     <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">Các khoá học hiện hành</h4>
+                        <div class="card-header d-block">
+                            <h4 class="card-title">Chỉnh sửa chi tiết khoá học</h4>
+                            <p class="m-0 subtitle">Chỉnh sửa khoá học tại đây. Thật <code>đơn giản</code> và dễ dàng</p>
                             <div class="input-group-append">
-                                <a href="{{route("addCourse")}}">
-                                <button type="button" class="btn btn-primary"><i class="fa fa-plus"></i>  Tạo khoá học</button>
+                                <a href="{{route('adminNewChapter', $idCourse)}}">
+                                    <button type="button" class="btn btn-primary"><i class="fa fa-plus"></i> Tạo chương mới </button>
                                 </a>
                             </div>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-responsive-md">
-                                    <thead>
-                                    <tr>
-                                        <th style="width:80px;"><strong>#ID</strong></th>
-                                        <th><strong>Tên khoá</strong></th>
-                                        <th><strong>Ngày tải lên</strong></th>
-                                        <th><strong>Học viên</strong></th>
-                                        <th><strong>Giá</strong></th>
-                                        <th></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach($data as $course)
-                                        <tr>
-                                            <td><strong>{{$course->id}}</strong></td>
-                                            <td>{{$course->name_course}}</td>
-                                            <td>{{$course->created_date}}</td>
-                                            <td><span class="badge light badge-success">10 HV</span></td>
-                                            <td>{{number_format($course->price)}} VNĐ</td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <button type="button" class="btn btn-success light sharp" data-toggle="dropdown">
-                                                        <svg width="20px" height="20px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"/><circle fill="#000000" cx="5" cy="12" r="2"/><circle fill="#000000" cx="12" cy="12" r="2"/><circle fill="#000000" cx="19" cy="12" r="2"/></g></svg>
-                                                    </button>
-                                                    <div class="dropdown-menu">
-                                                        <a class="dropdown-item" href="{{route('adminCourseDetail', $course->id)}}">Edit</a>
-                                                        <a class="dropdown-item" href="#">Delete</a>
+                            <!-- Default accordion -->
+                            <div id="accordion-one" class="accordion accordion-primary">
+
+                                @for($i = 0; $i < count($tableColumn); $i++)
+                                <div class="accordion__item">
+                                    <div class="accordion__header collapsed rounded-lg" data-toggle="collapse" data-target="#default_collapse{{$i}}">
+                                        <span class="accordion__header--text">{{$tableColumn[$i]->name}}</span>
+                                        <span class="accordion__header--indicator"></span>
+                                    </div>
+                                    <div id="default_collapse{{$i}}" class="collapse accordion__body" data-parent="#accordion-one">
+                                        <div class="accordion__body--text">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4 class="card-title">{{$tableColumn[$i]->name}}</h4>
+                                                    <div class="input-group-append">
+                                                        <div class="dropdown">
+                                                            <button type="button" class="btn btn-success light sharp" data-toggle="dropdown">
+                                                                <svg width="20px" height="20px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"/><circle fill="#000000" cx="5" cy="12" r="2"/><circle fill="#000000" cx="12" cy="12" r="2"/><circle fill="#000000" cx="19" cy="12" r="2"/></g></svg>
+                                                            </button>
+                                                            <div class="dropdown-menu">
+                                                                <a class="dropdown-item" href="#">Edit</a>
+                                                                <a class="dropdown-item" href="#">Delete</a>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                                <div class="card-body">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-responsive-md">
+                                                            <thead>
+                                                            <tr>
+                                                                <th style="width:80px;"><strong>#ID</strong></th>
+                                                                <th><strong>Tên bài giảng</strong></th>
+                                                                <th><strong>Status</strong></th>
+                                                                <th><strong>Ngày upload</strong></th>
+                                                                <th></th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            @foreach($videos as $detail)
+                                                                @if ($detail->id_column == $tableColumn[$i]->id)
+                                                            <tr>
+                                                                <td><strong>{{$detail->id}}</strong></td>
+                                                                <td>{{$detail->name}}</td>
+                                                                @if($detail->lock_status == 1)
+                                                                    <td><span class="badge light badge-danger">Miễn phí</span></td>
 
+                                                                @else
+                                                                    <td><span class="badge light badge-success">Trả phí</span></td>
+                                                                @endif
 
-                                    </tbody>
-                                </table>
+                                                                    <td>{{$detail->created_date}}</td>
+                                                                <td>
+                                                                    <div class="dropdown">
+                                                                        <button type="button" class="btn btn-success light sharp" data-toggle="dropdown">
+                                                                            <svg width="20px" height="20px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"/><circle fill="#000000" cx="5" cy="12" r="2"/><circle fill="#000000" cx="12" cy="12" r="2"/><circle fill="#000000" cx="19" cy="12" r="2"/></g></svg>
+                                                                        </button>
+                                                                        <div class="dropdown-menu">
+                                                                            <a class="dropdown-item" href="#">Edit</a>
+                                                                            <a class="dropdown-item" href="#">Delete</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            @endif
+                                                            @endforeach
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="input-group-append">
+                                                        <a href="{{route("addCourse")}}">
+                                                            <button type="button" class="btn btn-primary"><i class="fa fa-plus"></i> Bài giảng mới </button>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                    @endfor
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- Column ends -->
+                <!-- Column starts -->
 
+                <!-- Column ends -->
             </div>
-
+            <!-- Row ends -->
         </div>
+        <!-- container ends -->
     </div>
     <!--**********************************
-        Content body end
-    ***********************************-->
+            Content body end
+        ***********************************-->
 
 
     <!--**********************************

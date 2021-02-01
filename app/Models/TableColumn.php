@@ -13,4 +13,10 @@ class TableColumn extends Model
     public function getColumnID($id_course){
         return DB::table($this->table)->where('id_course', $id_course)->get();
     }
+    public function addNewColumn($id_course, $name){
+        DB::table($this->table)->insert([
+           "name" => $name,
+            "id_course" => $id_course
+        ]);
+    }
 }

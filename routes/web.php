@@ -63,4 +63,11 @@ Route::prefix('admin')->group(function () {
 
     Route::post('/courses/add', 'AdminController@addCourse');
 
+
+    Route::get('/courses/detail/id={id}', 'AdminController@showDetail' )->name("adminCourseDetail");
+
+    // new chapter.
+
+    Route::get('/course={id_course}/chapter/new', 'AdminController@getNewChapter' )->name("adminNewChapter");
+
 });

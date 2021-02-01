@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\courses;
+use App\Models\TableColumn;
+use App\Models\videos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -64,6 +66,27 @@ class AdminController extends Controller
             //code here
             return view("Admin.Pages.courses.addcourse", ["fileValidate" => "Sai định dạng file."]);
         }
+
+    }
+
+    public function showDetail($course_id){
+        //define model.
+        $course = new courses();
+        $tableColumn = new TableColumn();
+        $videos = new videos();
+
+        // logic solution.
+        $detail = $course->getCourseDetail($course_id); //course detail.
+        $columnID = $tableColumn->getColumnID($course_id); //get column id.
+        $video = $videos->videoCourse($course_id); //get video id.
+
+        return view("Admin.Pages.courses.CourseDetail", ["courseDetail" => $detail, "tableColumn" => $columnID, "videos" => $video, "idCourse" => $course_id]);
+
+
+    }
+    public function getNewChapter($id_course){
+
+        return view("Admin.Pages.courses.new_chapter", ["idCourse" => $id_course]);
 
     }
 
