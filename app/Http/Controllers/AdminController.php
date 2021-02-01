@@ -147,7 +147,7 @@ class AdminController extends Controller
 
             $document = $request->file('document');
             $document_name = $document->getClientOriginalName();
-            $documentURL = asset("documents/$document_name");
+            $documentURL = "documents/$document_name";
             $document->move("documents", $document_name);
             // add to database.
         }
