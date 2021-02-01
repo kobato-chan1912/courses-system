@@ -137,7 +137,7 @@ class AdminController extends Controller
         $file_name = explode('.',$file_name)[0];
         $video_name = $file_name. "_$id_course" . "_" . $id_column."_".$new_id.".mp4";
 
-        $videoURL = asset("courses/$folder/$video_name");
+        $videoURL = "courses/$folder/$video_name";
 
         $video->move("courses/$folder", $video_name); //move video.
 
