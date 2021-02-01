@@ -90,4 +90,38 @@ class AdminController extends Controller
 
     }
 
+    // thêm chương mới.
+
+    public function addChapter($id_course, Request $request){
+        // define model.
+
+        $tableColumn = new TableColumn();
+        // validate
+        $request->validate([
+            'name_chapter' => 'required'
+        ]);
+        // add to DB
+        $tableColumn->addNewColumn($id_course, $request->name_chapter);
+
+        return redirect()->route("adminCourseDetail", $id_course);
+
+    }
+
+    public function getNewVideo($id_course, $id_column){
+
+        $course = new courses();
+        $tableColumn = new TableColumn();
+        $videos = new videos();
+
+        // logic solution.
+        $detail = $course->getCourseDetail($id_course); //course detail.
+        $columnID = $tableColumn->getDetailColumn($id_column); //get column id.
+
+        return view("Admin.Pages.courses.new_video", ["course_name" => $detail[0]->name_course, "table_name" => $columnID[0]->name]);
+
+    }
+    public function addVideo($id_course, $id_column, Request $request){
+        var_dump($request->all());
+    }
+
 }

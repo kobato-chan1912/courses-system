@@ -605,6 +605,7 @@
                                             <div class="card">
                                                 <div class="card-header">
                                                     <h4 class="card-title">{{$tableColumn[$i]->name}}</h4>
+
                                                     <div class="input-group-append">
                                                         <div class="dropdown">
                                                             <button type="button" class="btn btn-success light sharp" data-toggle="dropdown">
@@ -659,13 +660,15 @@
                                                             @endforeach
 
                                                             </tbody>
+                                                            <div class="input-group-append">
+                                                                <a href="{{route("adminNewVideos", ["id_course" => $idCourse, "id_column" => $tableColumn[$i]->id])}}">
+                                                                    <button type="button" class="btn btn-primary"><i class="fa fa-plus"></i> Bài giảng mới </button>
+                                                                </a>
+                                                            </div>
                                                         </table>
+
                                                     </div>
-                                                    <div class="input-group-append">
-                                                        <a href="{{route("addCourse")}}">
-                                                            <button type="button" class="btn btn-primary"><i class="fa fa-plus"></i> Bài giảng mới </button>
-                                                        </a>
-                                                    </div>
+
                                                 </div>
                                             </div>
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-@include("Admin.loading.header", ["title" => "Thêm chương"])
+@include("Admin.loading.header", ["title" => "New video"])
 
 <body>
 
@@ -571,7 +571,7 @@
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0)">Admin</a></li>
-                            <li class="breadcrumb-item active"><a href="javascript:void(0)">Thêm khoá học</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0)">Thêm mới bài giảng</a></li>
                         </ol>
                     </div>
                 </div>
@@ -581,28 +581,99 @@
                     <div class="col-xl-12 col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Thêm chương mới </h4>
-                                @error("name_chapter")
+                                <h4 class="card-title">Thêm mới bài giảng </h4>
+                                @error("name_course")
                                 <div class="text-danger">{{$message}}</div>
                                 @enderror
-
+                                @error("cover_img")
+                                <div class="text-danger">{{$message}}</div>
+                                @enderror
+                                @error("categories")
+                                <div class="text-danger">{{$message}}</div>
+                                @enderror
+                                @error("description")
+                                <div class="text-danger">{{$message}}</div>
+                                @enderror
+                                @error("price")
+                                <div class="text-danger">{{$message}}</div>
+                                @enderror
+                                @if(isset($fileValidate))
+                                    <div class="text-danger">{{$fileValidate}}</div>
+                                @endif
                             </div>
 
                             <div class="card-body">
                                 <div class="basic-form">
 
                                     <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label">Tên chương</label>
+                                        <label class="col-sm-3 col-form-label">Tên khoá học</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" placeholder="Tên chương" name="name_chapter">
+                                            <input type="text" class="form-control" value="{{$course_name}}" disabled>
 
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <div class="col-sm-10">
-                                            <button type="submit" class="btn btn-primary">Lưu chương</button>
+                                        <label class="col-sm-3 col-form-label">Chương</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" value="{{$table_name}}" disabled>
+
                                         </div>
                                     </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Tên bài giảng</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" placeholder="VD: Bài 1 - Lập trình hàm" name="name_video" required>
+
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Mô tả về video</label>
+                                        <div class="col-sm-9">
+                                            <textarea class="form-control" placeholder="Mô tả về video" name="description" required></textarea>
+
+                                        </div>
+                                    </div>
+                                    <fieldset class="form-group">
+                                        <div class="row">
+                                            <label class="col-form-label col-sm-3 pt-0">Trạng thái</label>
+                                            <div class="col-sm-9">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="gridRadios" value="option1" checked required>
+                                                    <label class="form-check-label">
+                                                        Miễn phí
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="gridRadios" value="option2">
+                                                    <label class="form-check-label">
+                                                        Trả phí
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Video tải lên (*mp4)</label>
+                                        <div class="col-sm-9">
+                                            <input type="file" name="cover_img" class="form-control" placeholder="cover" accept="video/mp4" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Tài liệu tải lên</label>
+                                        <div class="col-sm-9">
+                                            <input type="file" name="cover_img" class="form-control" placeholder="cover">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-sm-10">
+                                            <button type="submit" class="btn btn-primary">Lưu video</button>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>

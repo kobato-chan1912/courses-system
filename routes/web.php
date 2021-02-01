@@ -69,5 +69,11 @@ Route::prefix('admin')->group(function () {
     // new chapter.
 
     Route::get('/course={id_course}/chapter/new', 'AdminController@getNewChapter' )->name("adminNewChapter");
+    Route::post('/course={id_course}/chapter/new', 'AdminController@addChapter');
+
+
+    // new videos.
+    Route::get("/videos/add/course={id_course}/tableColumn={id_column}", 'AdminController@getNewVideo')->name('adminNewVideos');
+    Route::post("/videos/add/course={id_course}/tableColumn={id_column}", 'AdminController@addVideo');
 
 });

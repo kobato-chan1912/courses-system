@@ -13,4 +13,8 @@ class VideoController extends Controller
         $detailVideo = $videos->getVideoDetail($id);
         return view ("pages.videos", ["detail" => $detailVideo]);
     }
+
+
+    //
+
 }
